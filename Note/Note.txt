@@ -1,0 +1,310 @@
+--------- Buổi 1 ---------
+---- Thông tin
+Mentor: Đạo
+1. Viettel
+2. VTI Academy
+    Mentor:
+    Deploy: 
+    Cloud: AWS,...
+    pv tuyển dụng mentor
+    Phát triển các khóa học
+
+---- Khung chương trình
+-- ReactJS(17 buổi+ 1 buổi thi)
+1. TypeScript
+   JavaScript Extra
+   4-5Buổi
+
+2. ReactJS
+   còn lại	
+
+Thi:
+Project(vừa): ReactJS
+PV
+
+---- Sử dụng Git lưu trữ Source Code
+git clone https://github.com/daonq254/Railway82_Repository.git
+git add .
+git commit -m "new code!"
+git push
+
+-- 
+HTML
+CSS
+JavaScript
+
+Typescript: 
+   Không phải là 1 ngôn mới.
+   Nó chỉ 1 phiên bản mở rộng của JavaScript.
+
+ Hạn chế JavaScript?
+ #Bảo mật
+ #Quản lý bộ nhớ
+    var myName ="DaoNQ";  -- JavaScript
+    String myName = "DaoNQ"; -- Java
+
+    class   ==> intstance -- Java
+
+    -- JavaScript
+    var account1 = {
+        id:1,
+        name:"daonq",
+        address:"HN"
+    };
+        var account2 = {
+        id_num :1,
+        name: "daonq",
+        address: "HN"
+    }
+
+
+==> Typescript bản nâng cấp JavaScript
+    Chặt chẽ hơn
+    OOP 
+    Lập trình viên
+    TypeScript không chạy trực tiếp trên trình duyệt được
+
+
+-- Cài đặt công cụ
+Cài đặt Node Server:  https://nodejs.org/
+Kiểm tra phiên bản Node: node -v
+
+Cài đặt TypeScript: npm install -g typescript
+Kiểm tra phiên bản TypeScript vừa cài đăt: tsc --version
+
+
+-- Demo 1
+Viết 1 chương trình TypeScript: In ra dòng chữ "Hello VTI"
+Tạo file code Demo1.ts
+Chạy file code
+    1. Biên dịch file code ts ==> Js
+        cd  'D:\Railway82_Repository\1. TypeScritp + JS Extra\Demo 1'
+        ls: Hiển thị danh sách file có trong thư mục
+        tsc tên_file.ts (chú ý ghi 1 số chữ đầu của tên file sau đó dùng phím tab)
+    2. Chạy 
+        node tên_file.js
+
+Fix: 
+    1. Mở cmd, sau đó chạy lênh:
+        Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+    2. Mở VS Code để chạy chương trình xem đc chưa. ==> Nhờ tutor hỗ trợ
+
+ --------- Buổi 2 ---------   
+-- Cộng chuỗi:
+    console.log("Hello" + v_name + "!!!!!!!");
+    Template String
+        console.log(`Hello ${v_name} !!!....`);
+        (`... ${}  ... `)
+
+-- Demo OOP Trong TypeScript
+    Quản lý 1 số bạn trong lớp: id, name, address
+    Lưu thông tin các bạn
+    Hiển thị thông tin của 1 vài bạn học viên
+
+    Class Person
+	id
+	name
+	address
+
+        ==> instance
+        person1
+        person2
+
+    In thông tin các bạn ra màn hình.
+
+-- Cấu trúc Export, Import  
+Exprort:
+    1. export theo tên: export class Person 
+       import { tên } from "./đường_dẫn_tới_File_Import";
+
+    2. export {...,...}
+        export { tên }; 
+        import { tên } from "./đường_dẫn_tới_File_Import";
+
+    3. export default: trong 1 file chỉ có 1 lần đc export default
+         export default ten;
+        import alias from "./tên_file";
+
+Tool: Typescript Toolbox: Ctrl + Shift + P
+
+-- Bài tập
+Dựa vào bảng dữ liệu trong DB Testing System
+    Account
+    Department
+    Positon
+    Hãy tạo 1 chương trình viết bằng TypeScript
+    1. Tạo các class: Department, Account, Position(contructor, getter, setter)
+    2. Thực hiện tạo mới các instance từ các class bên trên, sử dụng mảng để lưu trữ nhiều dữ liệu
+    3. thực hiện in thông tin các instance bên trên. Sử dụng vòng lặp để in thông tin
+
+--------- Buổi 3- JS Extra: ---------   
+- Khai báo biến trong JavaScript (var, let):
+        Java:   int myAge=20;
+        JavaScript: var myAge=20;
+    + Khai báo biến sử dụng từ var: 
+        Khai báo lại 1 biến đã có trước đó(reDeclare)
+        Hoisting: Sử dụng 1 biến trước khi khai báo
+
+    + Khai báo biến sử dụng từ let: 
+        Không reDeclare, Hoisting  ==> reComment.
+- Khai báo hằng số: const
+    + Không thay đổi được.
+    + Sử dụng với Object
+    + Sử dụng với mảng
+
+- Scope: Global scope, Local scope
+
+- Destructuring
+    Object
+    Mảng
+
+- Spread Operator (...)
+     Object
+     Mảng
+
+--------- Buổi 4- JS Extra: ---------   
+- Khai báo Function trong JS
+    3 cách:
+        Khai báo kiểu truyền thống
+        Tạo 1 biến tham chiếu tới 1 hàm
+        Sử dụng Arror Function
+
+// Higher Order Function HOF
+    1 hàm có thể nhận 1 hàm khác làm tham số
+    1 hàm sau khi xử lý xong có thể trả về 1 hàm khác
+
+// Map
+    Mỗi lần lặp lấy được giá trị phần tử và index của phần tử tại lần lặp hiện tại
+    ==> Tạo ra phần tử của mảng mới theo Logic
+
+// Bất đồng bộ trong JS
+
+     $.ajax({
+        url: 'http://localhost:8080/api/v1/accounts/',
+        type: 'POST',
+        data: JSON.stringify(account), // body
+        contentType: "application/json", // type of body (json, xml, text)
+        // dataType: 'json', // datatype return
+        
+        success: function(data, textStatus, xhr) {
+           Dữ liệu trả về 
+        }
+    });
+Code đồng bộ
+Code Bất đồng bộ
+
+==> Xử lý code bất đồng bộ  
+==> Callback hell   ==> không mong muốn
+
+    1. Promise
+    2. Asyn Await
+
+
+REACTJS
+--------- Buổi 5 ---------
+Tạo dự án ReactJS đầu tiên
+    Thực hiện cài đặt công cụ giúp tạo cấu trúc dự án: create-react-app (npm install -g create-react-app)
+    Sử dụng công cụ create-react-app để tạo dự án ReactJS: create-react-app demo1
+
+    Thực hiện chạy dự án: npm start
+
+Phân chia giao diện
+Component:
+    Cấu trúc của 1 Component:
+        import "./App.css";
+
+                function App() {
+                // 
+                return (
+                    <div className="App">
+                    <h4> Hello VTI</h4>
+                    </div>
+                );
+                }
+
+                export default App;
+    ==> Export
+    Sử dụng component thực hiện Import:  <Tên Component/>
+
+Mã JSX:(Không phải mã HTML)
+        <div className="App">
+            <h4> Hello VTI</h4>
+            <h5>My Name Is DAONQ</h5>
+        </div>
+
+Mã Non JSX
+    React.createElement(
+        "div",
+        null,
+        React.createElement("h1", null, "HELLO VTI")
+    );
+
+CSS cho các Component
+ Cách 1: CSS trong các thẻ JSX:
+    style={{ backgroundColor: "blue", width: "200px", height: "100px" }}
+    background-color
+    backgroundColor
+ Cách 2: Tách thành 1 biến riêng
+
+ Cách 3: Tạo file .css riêng và Import để sử dụng
+
+--------- Buổi 5 ---------
+Xử lý sự kiện trong ReactJS
+    Bắt sự kiện: 
+         onClick={handleClick}
+    Hàm xử lý sự kiện: Viết dưới dạng Arror Function
+          let handleClick = () => {
+                alert("Hello DAONQ!");
+            };
+
+
+Cài đặt thêm Extension để tạo nhanh Component
+    Trong ReactJS cung cấp cho bạn 2 cách để tạo Component
+    Cách 1: Sử dụng Function Component
+         Gõ phím tắt rsf để tạo nhanh Function Component
+         import React from "react";
+
+        function Banner(props) {
+        return (
+            <div>
+            <h1>This is banner</h1>
+            </div>
+        );
+        }
+
+        export default Banner;
+    
+    Cách 2: Sử dụng Class Component
+        Gõ phím tắt rcc để tạo nhanh Class Component
+        // rcc
+    import React, { Component } from "react";
+
+        class Content1 extends Component {
+        // Hàm render
+        render() {
+            return (
+            <div>
+
+                <h2>This is Content1</h2>
+            </div>
+            );
+        }
+        }
+
+        export default Content1;
+
+
+Cài đặt công cụ Fomat Code: Prettier - Code formatter
+
+Hướng dẫn sử dụng Bootstrap 3 
+    Cài đặt công cụ: Bootstrap 3 Snippets
+    Import thư viện Bootstrap vào sử dụng: bs3-cdn
+        <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+    Sử dụng các thành phần có sẵn
+    Xây dựng layout trang web
+
+   
