@@ -1,9 +1,6 @@
-import React from "react";
-
 function Menu() {
   return (
-    <div className="Menu">
-      <div>Hung dep trai</div>
+    <div>
       <ul>
         <li>Home</li>
         <li>Contact</li>

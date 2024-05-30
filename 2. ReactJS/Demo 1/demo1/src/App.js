@@ -1,14 +1,17 @@
 import "./App.css";
+// import "./AppCSS.css";
 
 function App() {
-  // xử lý logic
+  // Xử lý logic
+  //
 
-  // let divStyle = { backgroundColor: "blue", width: "200px", height: "120px" };
+  // let divStyle = { backgroundColor: "blue", width: "200px", height: "100px" };
   return (
-    // <div className="App" style={{ divStyle }}>
+    // <div className="App" style={{ backgroundColor: "blue", width: "200px", height: "100px" }}>
+    // <div className="App" style={divStyle}>
     <div className="App">
-      <h1>Hello VTI</h1>
-      <h2>My name is Hưng đẹp trai</h2>
+      <h4 className="h4Class"> Hello VTI</h4>
+      <h5>My Name Is DAONQ</h5>
     </div>
   );
 }

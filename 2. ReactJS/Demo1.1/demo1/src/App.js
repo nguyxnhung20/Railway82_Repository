@@ -1,20 +1,20 @@
-import React from "react";
 import "./App.css";
+// import React from "react";
 
 function App() {
-  let user = "Hưng đẹp trai";
+  //
+  //
   // return React.createElement(
   //   "div",
   //   null,
-  //   React.createElement("h1", null, "Hưng đẹp trai")
+  //   React.createElement("h1", null, "HELLO VTI")
   // );
-  const handleClick = () => {
-    alert(`Hello ${user}`);
+  let handleClick = () => {
+    alert("Hello DAONQ!");
   };
   return (
     <div className="App">
-      <h1>Helloo VTI</h1>
-      <h2>Nguyen Hung</h2>
+      <h1>Hello VTI</h1>
       <button type="button" onClick={handleClick}>
         Click me!!
       </button>
