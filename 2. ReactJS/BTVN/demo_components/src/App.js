@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import ComponentsBottom from "./Components/ComponentsBottom";
 import ComponentsTop from "./Components/ComponentsTop";
