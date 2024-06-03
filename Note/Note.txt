@@ -307,4 +307,32 @@ Hướng dẫn sử dụng Bootstrap 3
     Sử dụng các thành phần có sẵn
     Xây dựng layout trang web
 
-   
+--------- Buổi 6 ---------
+ State trong ReactJS
+VD: Bạn hãy đếm số lần người dùng click vào nút SentData? Và hiển thị số lần click vào ô Input? 
+State: 
+    Chỉ sử dụng State trong Class Component
+    Có vai trò như 1 biến trong Component
+    Khi nào giá trị của State thay đổi thì giao diện sẽ được cập nhật theo giá trị State mới
+    Sử dụng State:
+        Khai báo ra State cần sử dụng:
+        constructor: Thứ tự chạy(gọi), state
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                    click_Number: 0,
+                };
+            }
+        Để gọi giá trị state sử dụng: this.state.click_Number
+        Để thay đổi giá trị của 1 State
+             this.setState({
+                     click_Number: this.state.click_Number + 1,
+             });
+
+
+props: properties thuộc tính
+    Sử dụng để truyền dữ liệu từ Component Cha xuống Compoennt console
+    Có cấu trúc dạng Key và Value
+    key = value
+
+    Sử dụng với Class: this.props.Ten_props

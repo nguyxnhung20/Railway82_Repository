@@ -1,9 +1,10 @@
 import React from "react";
 
-function ComponentsBottom(props) {
+function ComponentsBottom({ headingBottom }) {
+  console.log(headingBottom);
   return (
     <div className="panel panel-warning">
-      <div className="panel-heading">Components_Bottom</div>
+      <div className="panel-heading">{headingBottom}</div>
       <div className="panel-body">
         <textarea
           id="input"
