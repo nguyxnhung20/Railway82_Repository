@@ -336,3 +336,23 @@ props: properties thuộc tính
     key = value
 
     Sử dụng với Class: this.props.Ten_props
+
+--------- Buổi 7 ---------
+1. Truyền dữ liệu từ component Con tới Compoennt Cha
+Phương pháp: sử dụng hàm Callback
+    Bước 1: Khai báo 1 hàm Callback ở Compoennt Cha
+    Bước 2: Thực hiện đẩy hảm Callback từ Compoennt Cha xuống component Con thông qua Props
+    Bước 3: Bước sử dụng gọi hàm Callback ở Compoennt Con
+    Bước 4: Trong TH muốn truyền dữ liệu từ Con tới Cha 
+            Thực hiện khai báo 1 tham số ở hàm Callback 
+            Dữ liệu tại Compoennt Cha nhận được thông qua tham số này
+
+2. Truyền dữ liệu giữa 2 component cùng cấp
+    Không thực hiện truyền dữ liệu trực tiếp đc, phải truyền qua 1 component trung gian,
+    component trung gian phải đảm bảo điều kiện có thể truyền dữ liệu giữa 2 component cùng cấp kia
+    Chuyển đổi giữa Function ==> Class Component
+        rcc ==> tạo cấu trúc Class Component
+        lưu ý khi khai báo các hàm, biến trong class Compoennt ==> khi gọi chú ý thêm từ khóa this
+    
+3. Truyền giữa liệu qua nhiều tầng
+    Sử dụng Props để truyền lần lượt qua từng tầng

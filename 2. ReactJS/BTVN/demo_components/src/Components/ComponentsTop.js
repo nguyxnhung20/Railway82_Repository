@@ -1,65 +1,83 @@
 import React, { Component } from "react";
+import ComponentsTopChild from "./ComponentsTopChild";
 
-class ComponentsTop extends Component {
-  // khai báo hàm contructor, tạo ra 1 bảng state
+class ComponentTop extends Component {
+  // Khai báo hàm contructor
   constructor(props) {
     super(props);
     this.state = {
-      clickNumber: 0,
+      click_Number: 0,
     };
   }
 
+  // Khai báo biến lưu số lần click vào nút SentData
+  //   clickNumber = 0;
+  // khai báo hàm sử lý sự kiện khi người dùng nhấn nút SentData
   handleClick = () => {
-    // thay đổi giá trị state
-    this.setState(
-      {
-        clickNumber: this.state.clickNumber + 1,
-      },
-      () => {
-        console.log("Số lần nhấp: " + this.state.clickNumber);
-      }
-    );
+    // this.clickNumber = this.clickNumber + 1;
+    // console.log("clickNumber: ", this.clickNumber);
+    // let x = this.state.click_Number;
+    // this.setState({
+    //   click_Number: this.state.click_Number + 1,
+    // });
+    // console.log("click_Number: ", this.state.click_Number);
+    // Khai báo 1 dữ liệu bất kỳ
+    let myNameVTI = "Hưng đẹp trai VTI Academy!!! ";
+    this.props.prop_getDataFromTop(myNameVTI);
   };
-
+  // render
   render() {
-    // gọi dữ liệu từ app xuông để sử dụng
-    // let v_prop_dataFromAppToTop = this.props.prop_dataFromAppToTop; // "Hưng đẹp trai"
+    // Gọi dữ liệu từ App truyền xuống để sử dụng
+    // let prop_dataFromAppToTop = this.props.prop_dataFromAppToTop; // "Hưng đẹp trai VTI Academy"
     // let prop_headingTop = this.props.prop_headingTop;
+    // ... Destructuring
+    let {
+      prop_dataFromAppToTop,
+      prop_headingTop,
+      prop_myName,
+      fromDataToTopChild,
+    } = this.props;
+    //
+    console.log("prop_dataFromAppToTop: ", prop_dataFromAppToTop);
+    console.log("prop_headingTop: ", prop_headingTop);
 
-    // Detructuring
-    let { prop_headingTop, prop_dataFromAppToTop, prop_Name } = this.props;
-
-    console.log("dataFromAppToTop: ", prop_dataFromAppToTop);
-    console.log("headingTop: ", prop_headingTop);
-    console.log("Name: ", prop_Name);
-
+    console.log("prop_myName: ", prop_myName);
+    //
     return (
-      <div className="panel panel-primary">
-        <div className="panel-heading">{prop_headingTop}</div>
-        <div className="panel-body">
-          <form method="" id="Main_Form_ID" className="form-inline">
-            <div className="form-group">
-              <input
-                type="text"
-                name="Input_Name"
-                id="input"
-                className="form-control input-field"
-                required="required"
-                placeholder={this.state.clickNumber}
-              />
+      <div className="row">
+        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          {/* Panel */}
+          <div className="panel panel-success">
+            <div className="panel-heading">
+              <h3 className="panel-title">{prop_headingTop}</h3>
             </div>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={this.handleClick}
-            >
-              Gửi Dữ Liệu
-            </button>
-          </form>
+            <div className="panel-body">
+              <div className="row">
+                <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={this.state.click_Number}
+                  />
+                </div>
+                <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={this.handleClick}
+                  >
+                    Sent Data
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ComponentsTopChild fromDataToTopChild={fromDataToTopChild} />
         </div>
       </div>
     );
   }
 }
+//
 
-export default ComponentsTop;
+export default ComponentTop;
