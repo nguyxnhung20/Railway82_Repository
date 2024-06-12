@@ -356,3 +356,71 @@ Phương pháp: sử dụng hàm Callback
     
 3. Truyền giữa liệu qua nhiều tầng
     Sử dụng Props để truyền lần lượt qua từng tầng
+
+--------- Buổi 8   ---------
+1. Xử lý Form: Lấy dữ liệu người dùng nhập vào các ô Input trong React
+Ý tưởng: Mỗi khi nhập 1 ký tự nào đó vào ô nhập liệu ==> Lập tức lưu trữ lại ngay
+    Bước 1: Khai báo 1 State để lưu trữ dữ liệu cho ô nhập liệu
+    Bước 2: Băt sự kiện onChange trong ô Input nhập liệu
+    Bước 3: Viết hàm xử lý handleChange để xử lý cho sự kiện onChange
+          handleChange = (event) => {
+                // console.log("event: ", event);
+                // console.log("event.target.value: ", event.target.value);
+                this.setState({
+                inputData: event.target.value,
+                });
+            };
+
+2. React Fragment
+    Đây là 1 thẻ được dùng làm thẻ cha trong JSX, đảm bảo tính đúng đắn của đoạn mã JSX
+    Thẻ này trong suốt với giao diện
+
+3. LifeCycle trong Class Component
+    LifeCycle: Vòng đời
+        Vòng đời(LifeCycle) của 1 con người
+
+    LifeCycle của Compoennt trên giao diện
+    Mouting 
+        contructor
+        render
+        compoentDidMount
+
+    Updating
+        render
+        compoentDidUpdate
+    UnMouting
+        compoentWillUnMount
+
+    Demo:
+        Bước 1: Tạo ra dự án ReactJS
+        Bước 2: Tạo ra 1 component nào đấy: LifeCycleDemo
+        Bước 3: Xem các quá trình của Component trên giao diện
+
+--------- Buổi 9   ---------
+1. Hook
+    Class Compoennt: State, LifeCycle
+    Function Compoennt ==> hook
+        state ==> hook: useState()
+              const [tên State, Tên hàm Set lại giá trị cho State] = useState(Giá trị khởi tạo cho State);
+              Thay đổi giá trị State: theo Tên hàm khai báo
+        LifeCycle Class Component ==> hook useEffect()
+            useEffect(function,[Dependency])
+            useEffect(() => {
+                console.log("Bạn vừa gọi tới đoạn Code1 trong userEffect");
+                }); ==> tương đương với compoentDidMount, compoentDidUpdate trong Class Compoennt
+
+            useEffect(() => {
+                    console.log("Bạn vừa gọi tới đoạn Code1 trong userEffect");
+                }, []); ==> tương đương với compoentDidMount trong Class Compoennt
+
+            useEffect(() => {
+                    console.log("Bạn vừa gọi tới đoạn Code1 trong userEffect");
+                }, [Count1]); ==> tương đương với compoentDidMount và khi State Count1 thì sẽ gọi lại useEffect()
+
+            useEffect(() => {
+                //
+                return () => {
+                console.log("Đoạn code tương đương với ComponentWillUnmount");
+                }; ==> tương đương với ComponentWillUnmount trong Class Compoennt
+            });
+        ...  
