@@ -3,6 +3,7 @@ import { Table, Container } from "reactstrap";
 import ResultFormItem from "./ResultFormItem";
 
 function ResultForm(props) {
+  const { listAccount } = props;
   return (
     <Container>
       <br />
@@ -22,12 +23,7 @@ function ResultForm(props) {
           </tr>
         </thead>
         <tbody>
-          <ResultFormItem />
-          <ResultFormItem />
-          <ResultFormItem />
-          <ResultFormItem />
-          <ResultFormItem />
-          <ResultFormItem />
+          <ResultFormItem listAccount={listAccount} />
         </tbody>
       </Table>
     </Container>

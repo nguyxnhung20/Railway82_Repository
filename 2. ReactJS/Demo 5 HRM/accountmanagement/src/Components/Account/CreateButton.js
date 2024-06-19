@@ -3,9 +3,9 @@ import { Container, Button } from "reactstrap";
 
 function CreateButton(props) {
   // Gọi lại các props từ bên trên truyền xuống
-  let { onHandleCreateButtuon } = props;
+  const { onHandleCreateButtuon } = props;
   // Hàm xử lý khi click vào nút CreateNewAccount
-  let handleCreateNewAccount = () => {
+  const handleCreateNewAccount = () => {
     onHandleCreateButtuon();
   };
   //

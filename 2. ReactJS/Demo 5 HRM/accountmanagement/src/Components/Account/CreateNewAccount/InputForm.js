@@ -1,9 +1,44 @@
 // https://reactstrap.github.io/?path=/story/home-installation--page
 
-import React from "react";
+import React, { useState } from "react";
 import { Container, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { generateId } from "../../../Utils/Helpers/generateId";
+import { getNowDate } from "../../../Utils/Helpers/getNowDate";
 
 function InputForm(props) {
+  // Gọi lại các props từ bên trên truyền xuống
+  const { onHandleCreateNewAccount } = props;
+
+  // Khai báo State lưu trữ giá trị của các ô nhập liệu
+  const [Email, SetEmail] = useState("");
+  const [Username, SetUsername] = useState("");
+  const [Fullname, SetFullname] = useState("");
+  const [Department, SetDepartment] = useState("");
+  const [Postion, SetPostion] = useState("");
+
+  // Hàm xử lý khi click vào nút Create
+  const handleCreate = () => {
+    const accountNew = {
+      id: generateId(),
+      email: Email,
+      username: Username,
+      fullname: Fullname,
+      department: Department,
+      position: Postion,
+      createDate: getNowDate(),
+    };
+    // console.log("accountNew: ", accountNew);
+    // Truyền Account cần tạo mới về AccountContainer xử lý
+    onHandleCreateNewAccount(accountNew);
+  };
+
+  // Hàm xử lý khi ấn vào nút Reset
+  const handleReset = () => {
+    SetEmail("");
+    SetUsername("");
+    SetFullname("");
+  };
+
   return (
     <Container>
       <Form>
@@ -12,9 +47,13 @@ function InputForm(props) {
           <Label for="Email">Email: </Label>
           <Input
             id="Email"
-            name="Email"
             placeholder="Input Email"
             type="email"
+            name="Email"
+            value={Email}
+            onChange={(event) => {
+              SetEmail(event.target.value);
+            }}
           />
         </FormGroup>
 
@@ -23,9 +62,13 @@ function InputForm(props) {
           <Label for="Username">Username: </Label>
           <Input
             id="Username"
-            name="Username"
             placeholder="Input Username"
             type="text"
+            name="Username"
+            value={Username}
+            onChange={(event) => {
+              SetUsername(event.target.value);
+            }}
           />
         </FormGroup>
 
@@ -34,16 +77,28 @@ function InputForm(props) {
           <Label for="Fullname">Fullname: </Label>
           <Input
             id="Fullname"
-            name="Fullname"
             placeholder="Input Fullname"
             type="text"
+            name="Fullname"
+            value={Fullname}
+            onChange={(event) => {
+              SetFullname(event.target.value);
+            }}
           />
         </FormGroup>
 
         {/* Department */}
         <FormGroup>
           <Label for="Department">Select a Department: </Label>
-          <Input id="Department" name="Department" type="select">
+          <Input
+            id="Department"
+            name="Department"
+            type="select"
+            value={Department}
+            onChange={(event) => {
+              SetDepartment(event.target.value);
+            }}
+          >
             <option value={"Bán hàng"}>Bán hàng</option>
             <option value={"Bảo vệ"}>Bảo vệ</option>
             <option value={"Giám đốc"}>Giám đốc</option>
@@ -55,7 +110,15 @@ function InputForm(props) {
         {/* Postion */}
         <FormGroup>
           <Label for="Postion">Select a Postion: </Label>
-          <Input id="Postion" name="Postion" type="select">
+          <Input
+            id="Postion"
+            name="Postion"
+            type="select"
+            value={Postion}
+            onChange={(event) => {
+              SetPostion(event.target.value);
+            }}
+          >
             <option value={"Dev"}>Dev</option>
             <option value={"Test"}>Test</option>
             <option value={"Scrum_Master"}>Scrum_Master</option>
@@ -64,8 +127,12 @@ function InputForm(props) {
         </FormGroup>
       </Form>
       {/* Nút xử lý */}
-      <Button color="primary">Create</Button>
-      <Button color="danger">Reset</Button>
+      <Button color="primary" onClick={handleCreate}>
+        Create
+      </Button>
+      <Button color="danger" onClick={handleReset}>
+        Reset
+      </Button>
     </Container>
   );
 }
