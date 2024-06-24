@@ -7,7 +7,7 @@ import { getNowDate } from "../../../Utils/Helpers/getNowDate";
 
 function InputForm(props) {
   // Gọi lại các props từ bên trên truyền xuống
-  const { onHandleCreateNewAccount } = props;
+  const { onHandleCreateNewAccount, listPosition, listDepartment } = props;
 
   // Khai báo State lưu trữ giá trị của các ô nhập liệu
   const [Email, SetEmail] = useState("");
@@ -38,6 +38,24 @@ function InputForm(props) {
     SetUsername("");
     SetFullname("");
   };
+
+  // Hiển thị danh sách Position
+  let positionItem = listPosition.map((position, index) => {
+    return (
+      <option value={position.id} key={index}>
+        {position.name}
+      </option>
+    );
+  });
+
+  // hàm hiển thị danh sách department
+  let departmentItem = listDepartment.map((department, index) => {
+    return (
+      <option value={department.id} key={index}>
+        {department.name}
+      </option>
+    );
+  });
 
   return (
     <Container>
@@ -99,11 +117,12 @@ function InputForm(props) {
               SetDepartment(event.target.value);
             }}
           >
-            <option value={"Bán hàng"}>Bán hàng</option>
+            {/* <option value={"Bán hàng"}>Bán hàng</option>
             <option value={"Bảo vệ"}>Bảo vệ</option>
             <option value={"Giám đốc"}>Giám đốc</option>
             <option value={"Kỹ thuật"}>Kỹ thuật</option>
-            <option value={"Marketing"}>Marketing</option>
+            <option value={"Marketing"}>Marketing</option> */}
+            {departmentItem}
           </Input>
         </FormGroup>
 
@@ -119,10 +138,11 @@ function InputForm(props) {
               SetPostion(event.target.value);
             }}
           >
-            <option value={"Dev"}>Dev</option>
+            {/* <option value={"Dev"}>Dev</option>
             <option value={"Test"}>Test</option>
             <option value={"Scrum_Master"}>Scrum_Master</option>
-            <option value={"PM"}>PM</option>
+            <option value={"PM"}>PM</option> */}
+            {positionItem}
           </Input>
         </FormGroup>
       </Form>

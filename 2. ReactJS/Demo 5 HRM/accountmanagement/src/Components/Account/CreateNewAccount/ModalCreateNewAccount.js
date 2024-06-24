@@ -12,7 +12,13 @@ import InputForm from "./InputForm";
 
 function ModalCreateNewAccount(props) {
   // Gọi lại các props truyền từ bên ngoài vào
-  const { showForm, onHandleCloseModal, onHandleCreateNewAccount } = props;
+  const {
+    showForm,
+    onHandleCloseModal,
+    onHandleCreateNewAccount,
+    listPosition,
+    listDepartment,
+  } = props;
   return (
     <Container>
       <br />
@@ -21,7 +27,11 @@ function ModalCreateNewAccount(props) {
           <h3>Create New Account</h3>
         </ModalHeader>
         <ModalBody>
-          <InputForm onHandleCreateNewAccount={onHandleCreateNewAccount} />
+          <InputForm
+            onHandleCreateNewAccount={onHandleCreateNewAccount}
+            listPosition={listPosition}
+            listDepartment={listDepartment}
+          />
         </ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={onHandleCloseModal}>

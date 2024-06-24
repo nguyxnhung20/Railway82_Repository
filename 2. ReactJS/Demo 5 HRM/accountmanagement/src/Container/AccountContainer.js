@@ -11,6 +11,11 @@ function AccountContainer(props) {
   // Khai báo State để quản lý danh sách Account trên hệ thống
   let [listAccount, setListAccount] = useState([]);
 
+  // khai báo state để quản lý danh sách positipn
+  const [listPosition, setListPosition] = useState([]);
+  // khai báo state để quản lý danh sách department
+  const [listDepartment, setListDepartment] = useState([]);
+
   // Hàm Callback xử lý khi nhấn nút CreateNewAccount
   let onHandleCreateButtuon = () => {
     // console.log("click!!");
@@ -33,6 +38,7 @@ function AccountContainer(props) {
     setShowForm(false);
   };
 
+  // Hàm lấy dữ liệu Account từ API
   let fetchListAccount = function () {
     const baseURL = `http://localhost:8080`; // Link địa chỉ Server
 
@@ -45,11 +51,39 @@ function AccountContainer(props) {
       .catch((error) => console.log(error));
   };
 
+  // Hàm lấy dữ liệu position theo api
+  const fetchListPosition = () => {
+    const baseURL = `http://localhost:8080`; // Link địa chỉ Server
+
+    Axios.get(`${baseURL}/api/v1/possitions`)
+      .then((response) => {
+        // console.log(response.data);
+        let listPosition_API = response.data;
+        setListPosition(listPosition_API);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // Hàm lấy dữ liệu department theo api
+  const fetchListDepartment = () => {
+    const baseURL = `http://localhost:8080`; // Link địa chỉ Server
+
+    Axios.get(`${baseURL}/api/v1/departments`)
+      .then((response) => {
+        // console.log(response.data);
+        let listDepartment_API = response.data;
+        setListDepartment(listDepartment_API);
+      })
+      .catch((error) => console.log(error));
+  };
+
   // setListAccount(listAccount);
 
   // Khai báo useEffect, useEffect này khi component được mount và mỗi khi State: listAccount thay đổi
   useEffect(() => {
     fetchListAccount();
+    fetchListPosition();
+    fetchListDepartment();
     // if (localStorage && localStorage.getItem("listAccount")) {
 
     // let listAccount_LocalStorage = JSON.parse(
@@ -69,6 +103,8 @@ function AccountContainer(props) {
         showForm={showForm}
         onHandleCloseModal={onHandleCloseModal}
         onHandleCreateNewAccount={onHandleCreateNewAccount}
+        listPosition={listPosition}
+        listDepartment={listDepartment}
       />
       {/* Form kết quả */}
       <ResultForm listAccount={listAccount} />
