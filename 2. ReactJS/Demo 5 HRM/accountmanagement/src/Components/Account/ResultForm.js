@@ -3,7 +3,7 @@ import { Table, Container } from "reactstrap";
 import ResultFormItem from "./ResultFormItem";
 
 function ResultForm(props) {
-  const { listAccount } = props;
+  const { listAccount, onHandleDelete } = props;
   return (
     <Container>
       <br />
@@ -23,7 +23,10 @@ function ResultForm(props) {
           </tr>
         </thead>
         <tbody>
-          <ResultFormItem listAccount={listAccount} />
+          <ResultFormItem
+            listAccount={listAccount}
+            onHandleDelete={onHandleDelete}
+          />
         </tbody>
       </Table>
     </Container>

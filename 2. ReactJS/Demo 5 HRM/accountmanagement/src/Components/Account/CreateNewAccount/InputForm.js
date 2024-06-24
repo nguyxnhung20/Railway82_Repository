@@ -40,7 +40,7 @@ function InputForm(props) {
   };
 
   // Hiển thị danh sách Position
-  let positionItem = listPosition.map((position, index) => {
+  const positionItem = listPosition.map((position, index) => {
     return (
       <option value={position.id} key={index}>
         {position.name}
@@ -49,7 +49,7 @@ function InputForm(props) {
   });
 
   // hàm hiển thị danh sách department
-  let departmentItem = listDepartment.map((department, index) => {
+  const departmentItem = listDepartment.map((department, index) => {
     return (
       <option value={department.id} key={index}>
         {department.name}

@@ -1,7 +1,7 @@
 import React from "react";
 // import { Container, Button } from "reactstrap";
 import { TinyColor } from "@ctrl/tinycolor";
-import { Button, ConfigProvider, Space } from "antd";
+import { Button, ConfigProvider } from "antd";
 
 const colors1 = ["#6253E1", "#04BEFE"];
 const getHoverColors = (colors) =>

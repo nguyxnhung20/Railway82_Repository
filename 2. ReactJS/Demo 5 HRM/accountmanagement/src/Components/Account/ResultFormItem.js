@@ -2,7 +2,12 @@ import React from "react";
 import { Button } from "reactstrap";
 
 function ResultFormItem(props) {
-  const { listAccount } = props;
+  const { listAccount, onHandleDelete } = props;
+
+  // hàm callback xử lý khi nhấn nút Delete
+  const onHandleDeleteAccount = (id) => {
+    onHandleDelete(id);
+  };
 
   let items = "";
   if (listAccount) {
@@ -20,7 +25,12 @@ function ResultFormItem(props) {
             <Button color="warning">Edit</Button>
           </td>
           <td>
-            <Button color="danger">Delete</Button>
+            <Button
+              color="danger"
+              onClick={() => onHandleDeleteAccount(account.id)}
+            >
+              Delete
+            </Button>
           </td>
         </tr>
       );
