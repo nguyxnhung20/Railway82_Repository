@@ -1,27 +1,22 @@
 import React from "react";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Container,
-} from "reactstrap";
-
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import InputForm from "./InputForm";
 
 function ModalCreateNewAccount(props) {
-  // Gọi lại các props truyền từ bên ngoài vào
-  const {
+  let {
     showForm,
     onHandleCloseModal,
     onHandleCreateNewAccount,
-    listPosition,
     listDepartment,
+    listPosition,
   } = props;
+
+  //
+  let handleClose = () => {
+    onHandleCloseModal();
+  };
   return (
-    <Container>
-      <br />
+    <>
       <Modal isOpen={showForm}>
         <ModalHeader>
           <h3>Create New Account</h3>
@@ -29,17 +24,17 @@ function ModalCreateNewAccount(props) {
         <ModalBody>
           <InputForm
             onHandleCreateNewAccount={onHandleCreateNewAccount}
-            listPosition={listPosition}
             listDepartment={listDepartment}
+            listPosition={listPosition}
           />
         </ModalBody>
         <ModalFooter>
-          <Button color="danger" onClick={onHandleCloseModal}>
+          <Button color="danger" onClick={handleClose}>
             Close
           </Button>
         </ModalFooter>
       </Modal>
-    </Container>
+    </>
   );
 }
 

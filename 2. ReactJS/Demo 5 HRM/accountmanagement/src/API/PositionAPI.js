@@ -1,8 +1,7 @@
-import { API } from "./API";
+import { api } from "./api";
 
-const getListPositionAPI = () => {
-  return API("GET", "possitions/", null);
+let getListPositionAPI = () => {
+  return api("GET", "possitions", null);
 };
 
-// export
 export { getListPositionAPI };

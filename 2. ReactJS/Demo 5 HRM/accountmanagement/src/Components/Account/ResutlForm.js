@@ -1,13 +1,12 @@
 import React from "react";
-import { Table, Container } from "reactstrap";
+import { Table } from "reactstrap";
 import ResultFormItem from "./ResultFormItem";
 
-function ResultForm(props) {
-  const { listAccount, onHandleDelete } = props;
+function ResutlForm(props) {
+  let { listAccount, onHandleDelete, onHandleEdit } = props;
   return (
-    <Container>
-      <br />
-      <h3>Danh sách Account</h3>
+    <>
+      <h3>Danh Sách Account</h3>
       <Table hover>
         <thead>
           <tr>
@@ -26,11 +25,12 @@ function ResultForm(props) {
           <ResultFormItem
             listAccount={listAccount}
             onHandleDelete={onHandleDelete}
+            onHandleEdit={onHandleEdit}
           />
         </tbody>
       </Table>
-    </Container>
+    </>
   );
 }
 
-export default ResultForm;
+export default ResutlForm;

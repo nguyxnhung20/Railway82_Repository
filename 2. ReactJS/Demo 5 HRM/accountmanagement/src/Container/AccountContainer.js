@@ -1,59 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "reactstrap";
 import CreateButton from "../Components/Account/CreateButton";
-import ModalCreateNewAccount from "../Components/Account/CreateNewAccount/ModalCreateNewAccount";
-import ResultForm from "../Components/Account/ResultForm";
-// import Axios from "axios"; // Import thư viện Axios để sử dụng
+import ResutlForm from "../Components/Account/ResutlForm";
+import ModalCreateNewAccount from "../Components/Account/ModalCreateNewAccount";
 import {
   getListAccountAPI,
-  addAccountNewAPI,
+  createNewAccountAPI,
   deleteAccountAPI,
-} from "../API/AccountAPI";
-import { getListDepartmentAPI } from "../API/DepartmentAPI";
+  updateAccountAPI,
+} from "../API/AccountApi";
+import { getListDepartmentAPI } from "../API/Department";
 import { getListPositionAPI } from "../API/PositionAPI";
 
 function AccountContainer(props) {
-  // Khai báo State để quản lý trạng thái đóng mở của ModalCreateNewAccount(InputForm)
-  const [showForm, setShowForm] = useState(false);
-  // Khai báo State để quản lý danh sách Account trên hệ thống
-  const [listAccount, setListAccount] = useState([]);
-  // Khai báo State để quản lý danh sách Account trên hệ thống
-  const [listDepartment, setListDepartment] = useState([]);
-  // Khai báo State để quản lý danh sách Account trên hệ thống
-  const [listPosition, setListPosition] = useState([]);
-  // Hàm Callback xử lý khi nhấn nút CreateNewAccount
-  const onHandleCreateButtuon = () => {
-    // console.log("click!!");
+  // Khai báo state showForm để quản lý ẩn hiện của Modal
+  let [showForm, setShowForm] = useState(false);
+  // Khai báo State ListAccount để quản lý danh sách Account đang có trên hệ thống
+  let [listAccount, setListAccount] = useState([]);
+
+  // Khai báo State để quản lý danh sách Department trên hệ thống
+  let [listDepartment, setListDepartment] = useState([]);
+  // Khai báo State để quản lý danh sách Position trên hệ thống
+  let [listPosition, setListPosition] = useState([]);
+
+  // Khai báo hàm callback để hiển thị modal
+  let onHandleCreateButton = () => {
+    // console.log("CLICK");
     setShowForm(true);
   };
-  // Hàm Callback xử lý khi nhấn nút Close ở ModalCreateNewAccount
-  const onHandleCloseModal = () => {
-    // console.log("click!!");
+  // Khai báo hàm callback để đóng Modal
+  let onHandleCloseModal = () => {
+    //
     setShowForm(false);
   };
-  // Hàm Callback xử lý khi nhấn nút Create ở InputForm
-  const onHandleCreateNewAccount = (accountNew) => {
-    console.log("accountNew: ", accountNew);
-    // Chuyển accountNew về Account cần thêm mới API
-    const accountNew_API = {
-      email: accountNew.email,
-      username: accountNew.username,
-      fullname: accountNew.fullname,
-      departmentId: accountNew.department,
-      positionId: accountNew.position,
-    };
-    // Gọi hàm call API
-    addAccountNewAPI(accountNew_API).then((response) => {
-      // Sau khi tạo dữ liệu để load lại listAccount
-      fetchListAccount();
-    });
-    // listAccount.push(accountNew);
-    // Set lại state listAccount
+  // Khai báo hàm callback để tạo mới Account
+  let onHandleCreateNewAccount = (account_New) => {
+    //
+    // console.log("account_New: ", account_New);
+    // listAccount.push(account_New);
     // setListAccount(listAccount);
-    // Lưu dữ liệu vào LocalStorage
-    // localStorage.setItem("listAccount", JSON.stringify(listAccount));
 
-    // Thực hiện đóng Form sau khi thêm mới
+    // Lưu listAccount xuống LocalStorage
+    // localStorage.setItem("listAccount", JSON.stringify(listAccount));
+    // Đóng form thêm mới
+    createNewAccountAPI(account_New).then(() => {
+      getListAccountAPI().then((res) => {
+        setListAccount(res);
+      });
+    });
     setShowForm(false);
   };
 
@@ -61,77 +54,74 @@ function AccountContainer(props) {
   const onHandleDelete = (id) => {
     // console.log("id: ", id);
     deleteAccountAPI(id).then((response) => {
-      fetchListAccount();
+      getListAccountAPI().then((res) => {
+        setListAccount(res);
+      });
     });
   };
 
-  // Hàm load dữ liệu API cho Account
-  const fetchListAccount = function () {
-    // const baseURL = `http://localhost:8080`; // Link địa chỉ Server
-    // Axios.get(`${baseURL}/api/v1/accounts`)
-    //   .then((response) => {
-    //     // console.log(response.data);
-    //     let listAccounts_API = response.data; // ListAccounts nhân được khi Call API
-    //     setListAccount(listAccounts_API); // Set lại State
-    //   })
-    //   .catch((error) => console.log(error));
+  // Hàm callback khi ấn vào nút edit
+  const onHandleEdit = (id) => {};
 
-    getListAccountAPI().then((response) => {
-      setListAccount(response);
-    });
-    // console.log("listAccounts_API", listAccounts_API);
-  };
+  //
+  // let fetchListAccount = () => {
+  //   // Axios.get(`http://localhost:8080/api/v1/accounts`).then((response) => {
+  //   //   // ...
+  //   //   // console.log("response: ", response.data);
 
-  // Hàm load dữ liệu API cho Account
-  const fetchListDepartment = function () {
-    // const baseURL = `http://localhost:8080`; // Link địa chỉ Server
-    // Axios.get(`${baseURL}/api/v1/departments`)
-    //   .then((response) => {
-    //     // console.log(response.data);
-    //     let listDepartment_API = response.data; // ListDepartment nhân được khi Call API
-    //     setListDepartment(listDepartment_API); // Set lại State
-    //   })
-    //   .catch((error) => console.log(error));
-    getListDepartmentAPI().then((response) => {
-      setListDepartment(response);
-    });
-  };
+  //   //   setListAccount(response.data);
+  //   // });
 
-  // Hàm load dữ liệu API cho Account
-  const fetchListPosition = function () {
-    // const baseURL = `http://localhost:8080`; // Link địa chỉ Server
-    // Axios.get(`${baseURL}/api/v1/possitions`)
-    //   .then((response) => {
-    //     // console.log(response.data);
-    //     let listPosition_API = response.data; // ListPosition nhân được khi Call API
-    //     setListPosition(listPosition_API); // Set lại State
-    //   })
-    //   .catch((error) => console.log(error));
-    getListPositionAPI().then((response) => {
-      setListPosition(response);
-    });
-  };
+  //   getListAccountAPI().then((res) => {
+  //     setListAccount(res);
+  //   });
+  // };
 
-  // Khai báo useEffect, useEffect này khi component được mount và mỗi khi State: listAccount thay đổi
+  //
+  // let fetchListDepartment = function () {
+  //   Axios.get(`http://localhost:8080/api/v1/departments`).then((response) => {
+  //     console.log(response.data);
+
+  //     setListDepartment(response.data);
+  //   });
+  // };
+
+  //
+  // let fetchListPosition = function () {
+  //   Axios.get(`http://localhost:8080/api/v1/possitions`).then((response) => {
+  //     console.log(response.data);
+
+  //     setListPosition(response.data);
+  //   });
+  // };
+
+  //
   useEffect(() => {
-    fetchListAccount();
-    fetchListDepartment();
-    fetchListPosition();
-    // if (localStorage && localStorage.getItem("listAccount")) {
-
+    // load dữ liệu từ LocalStorage vào state listAccount, load 1 lần trong chương trình
     // let listAccount_LocalStorage = JSON.parse(
     //   localStorage.getItem("listAccount")
     // );
-    // console.log("listAccount_LocalStorage: ", listAccount_LocalStorage);
     // setListAccount(listAccount_LocalStorage);
-    // }
+    // fetchListAccount();
+    // fetchListDepartment();
+    // fetchListPosition();
+
+    getListAccountAPI().then((res) => {
+      setListAccount(res);
+    });
+
+    getListDepartmentAPI().then((res) => {
+      setListDepartment(res);
+    });
+
+    getListPositionAPI().then((res) => {
+      setListPosition(res);
+    });
   }, []);
 
   return (
-    <Container>
-      {/* Nút thêm mới */}
-      <CreateButton onHandleCreateButtuon={onHandleCreateButtuon} />
-      {/* Form thêm mới Account*/}
+    <>
+      <CreateButton onHandleCreateButton={onHandleCreateButton} />
       <ModalCreateNewAccount
         showForm={showForm}
         onHandleCloseModal={onHandleCloseModal}
@@ -139,9 +129,9 @@ function AccountContainer(props) {
         listDepartment={listDepartment}
         listPosition={listPosition}
       />
-      {/* Form kết quả */}
-      <ResultForm listAccount={listAccount} onHandleDelete={onHandleDelete} />
-    </Container>
+      <br /> <br />
+      <ResutlForm listAccount={listAccount} onHandleDelete={onHandleDelete} />
+    </>
   );
 }
 

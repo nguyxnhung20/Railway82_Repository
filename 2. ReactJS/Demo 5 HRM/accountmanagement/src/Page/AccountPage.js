@@ -1,12 +1,11 @@
 import React from "react";
 import AccountContainer from "../Container/AccountContainer";
-import { Container } from "reactstrap";
 
 function AccountPage(props) {
   return (
-    <Container>
+    <div>
       <AccountContainer />
-    </Container>
+    </div>
   );
 }
 

@@ -1,28 +1,32 @@
-import { API } from "./API";
-// get listAccount API
-const getListAccountAPI = () => {
-  return API("GET", "accounts/", null);
+import { api } from "./api";
+
+let getListAccountAPI = () => {
+  //   Axios.get(`http://localhost:8080/api/v1/accounts`).then((response) => {
+  //     // ...
+  //     // console.log("response: ", response.data);
+  //   });
+  return api("GET", "accounts", null);
 };
 
-// Add New Account
-const addAccountNewAPI = (AccountNew) => {
-  return API("POST", "accounts/", AccountNew);
+let createNewAccountAPI = (accountNew) => {
+  return api("POST", "accounts", accountNew);
 };
 
 // Delete Account
 const deleteAccountAPI = (id) => {
-  const url = "accounts/" + id;
-  return API("DELETE", url, null);
+  let url = "accounts/" + id;
+  return api("DELETE", url, null);
 };
 
 // Update Account
 const updateAccountAPI = (accountUpdate) => {
-  const url = "accounts/" + accountUpdate.id;
-  return API("PUT", url, accountUpdate);
+  let url = "accounts/" + accountUpdate.id;
+  return api("PUT", url, accountUpdate);
 };
+
 export {
   getListAccountAPI,
-  addAccountNewAPI,
+  createNewAccountAPI,
   deleteAccountAPI,
   updateAccountAPI,
 };
